@@ -1,5 +1,7 @@
 # blog_front
 
-## npm i
+## react + redux + react-redux + antd + react-router
 
-## npm start
+## 1.npm i
+
+## 2.npm start
