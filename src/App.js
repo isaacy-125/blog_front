@@ -11,7 +11,6 @@ import Login from './Component/Login/Login';
 
 class App extends Component {
   render() {
-    window.console.log(this.props.indexReducer.get('isAuth'));
     return (
       <div>
         {

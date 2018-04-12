@@ -9,3 +9,17 @@ export function indexActionNotLogin() {
     type: 'n',
   }
 }
+
+export function indexActionSetUserId(data) {
+  return {
+    type: 'setUserId',
+    data: data,
+  }
+}
+
+export function indexActionSetUserName(data) {
+  return {
+    type: 'setUserName',
+    data: data,
+  }
+}

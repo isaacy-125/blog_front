@@ -1,24 +1,40 @@
+// reducer 总树
 import { combineReducers } from 'redux';
 import { Map } from 'immutable';
 import homeReducer from './homeReducer';
 
 const indexState = Map({
+  // 是否登录
   isAuth: false,
+  user: Map({
+    id: '',
+    username: '',
+  }),
 })
 
 export function indexReducer(state = indexState, action) {
   switch (action.type) {
+    // 登录
     case "y":
       return state.set('isAuth', true);
+    // 退出
     case "n":
       return state.set('isAuth', false);
+    // 设置登录用户id
+    case 'setUserId':
+      return state.setIn(['user', 'id'], action.data);
+    // 设置登录用户名
+    case 'setUserName':
+      return state.setIn(['user', 'username'], action.data);
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
+  // 登录相关树
   indexReducer,
+  // home页相关树
   homeReducer,
 })
 
