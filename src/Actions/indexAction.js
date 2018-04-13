@@ -23,3 +23,10 @@ export function indexActionSetUserName(data) {
     data: data,
   }
 }
+
+export function indexActionSetMenus(data) {
+  return {
+    type: 'setMenus',
+    data: data,
+  }
+}

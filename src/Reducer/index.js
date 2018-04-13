@@ -1,6 +1,6 @@
 // reducer 总树
 import { combineReducers } from 'redux';
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import homeReducer from './homeReducer';
 
 const indexState = Map({
@@ -10,6 +10,7 @@ const indexState = Map({
     id: '',
     username: '',
   }),
+  menus: List([]),
 })
 
 export function indexReducer(state = indexState, action) {
@@ -26,6 +27,9 @@ export function indexReducer(state = indexState, action) {
     // 设置登录用户名
     case 'setUserName':
       return state.setIn(['user', 'username'], action.data);
+    // 设置菜单数据
+    case 'setMenus':
+      return state.set('menus', List(action.data));
     default:
       return state;
   }

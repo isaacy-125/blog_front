@@ -31,7 +31,7 @@ class Header extends Component {
     );
     return (
       <div className="header">
-        
+        <h1>BLOG</h1>
         <Popover trigger="click" content={content} title={`Hi! ${this.props.indexReducer.getIn(['user', 'username'])}`}>
           <div className="header-user">
             <p>{this.props.indexReducer.getIn(['user', 'username']).substring(0, 1).toUpperCase()}</p>

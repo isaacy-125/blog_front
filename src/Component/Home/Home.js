@@ -8,15 +8,7 @@ import './Home.less';
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h2>{this.props.homeReducer}</h2>
-        <Button onClick={() => {
-          this.props.homeActionAdd()
-        }}>add</Button>
-        <Button onClick={() => {
-          this.props.homeActionDelete()
-        }}>delete</Button>
-      </div>
+      <div />
     )
   }
 }
