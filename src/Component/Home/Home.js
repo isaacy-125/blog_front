@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Button } from 'antd';
-import  * as actions from '../../Actions/homeAction';
+import homeImg from '../../assets/images/home.jpg';
 import './Home.less';
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
     return (
-      <div />
+      <div
+        className="HomeContainer"
+        style={{
+          backgroundImage: `url(${homeImg})`,
+          height: 'calc(100vh - 50px)',
+        }}
+      />
     )
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch)
-}
-
-export default connect(state => ({
-  homeReducer: state.homeReducer,
-}), mapDispatchToProps)(Home);

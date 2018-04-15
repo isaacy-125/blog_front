@@ -33,7 +33,7 @@ class SideMenu extends Component {
     return renders;
   }
   handleClick(e) {
-    console.log(e.key);
+    this.props.history.push(e.key);
   }
   render() {
     return (
@@ -46,6 +46,7 @@ class SideMenu extends Component {
         <Menu
           style={{ height: '100%' }} mode="inline" theme="dark"
           onClick={this.handleClick.bind(this)}
+          defaultSelectedKeys={['/']}
         >
           {
             this.props.indexReducer.get('menus').size > 0 ? this.renderMenuItem() : ''
@@ -60,8 +61,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch)
 }
 
-// 这里跳转路由 没有withRouter包住 因为该组件和RouterContent为兄弟组件
-// 没在Routern内部
-export default connect(state => ({
+export default withRouter( connect(state => ({
   indexReducer: state.indexReducer,
-}), mapDispatchToProps)(SideMenu);
+}), mapDispatchToProps)(SideMenu));

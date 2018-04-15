@@ -1,7 +1,6 @@
 // reducer 总树
 import { combineReducers } from 'redux';
 import { Map, List } from 'immutable';
-import homeReducer from './homeReducer';
 
 const indexState = Map({
   // 是否登录
@@ -38,8 +37,6 @@ export function indexReducer(state = indexState, action) {
 const rootReducer = combineReducers({
   // 登录相关树
   indexReducer,
-  // home页相关树
-  homeReducer,
 })
 
 export default rootReducer;
