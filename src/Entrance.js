@@ -11,8 +11,7 @@ export default class Entrance extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={App} />
-          <Route component={Home} />
+          <Route path="/" component={App} />
         </Switch>
       </Router>
     )
