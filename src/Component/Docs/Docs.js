@@ -4,7 +4,7 @@ import './Docs.less';
 class Docs extends Component {
   render() {
     return (
-      <div>docs</div>
+      <div className="docsContainer">docs</div>
     )
   }
 }

@@ -46,7 +46,7 @@ class SideMenu extends Component {
         <Menu
           style={{ height: '100%' }} mode="inline" theme="dark"
           onClick={this.handleClick.bind(this)}
-          defaultSelectedKeys={['/']}
+          defaultSelectedKeys={['/home']}
         >
           {
             this.props.indexReducer.get('menus').size > 0 ? this.renderMenuItem() : ''

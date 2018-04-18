@@ -8,11 +8,7 @@ export default class Home extends Component {
     return (
       <div
         className="HomeContainer"
-        style={{
-          backgroundImage: `url(${homeImg})`,
-          height: 'calc(100vh - 50px)',
-        }}
-      />
+      >home</div>
     )
   }
 }
