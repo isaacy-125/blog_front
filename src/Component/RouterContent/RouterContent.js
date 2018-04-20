@@ -7,20 +7,17 @@ import './RouterContent.less';
 import Home from '../Home/Home';
 import Docs from '../Docs/DocsIndex/Docs';
 import newDocs from '../Docs/DocsNew/DocsNew';
-import homeImg from '../../assets/images/home.jpg';
 
 export default class RouterContent extends Component {
   render() {
     return (
       <div
         style={{
-          backgroundImage: `url(${homeImg})`,
           height: 'calc(100vh - 50px)',
           width: '100%',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
           overflowX: 'hidden',
           overflowY: 'auto',
+          padding: '0 2rem',
         }}
       >
         <Switch>

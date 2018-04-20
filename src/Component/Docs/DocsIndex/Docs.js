@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { List, Avatart, Icon, Button } from 'antd';
+import { List, Avatart, Icon, Button, Input, Select } from 'antd';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../../Actions/docsAction';
 import axios from '../../../util/axios';
 import './Docs.less';
 
+const Option = Select.Option;
+
 class Docs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchOption: 'title',
+    }
+  }
   componentWillMount() {
     axios.get('/docs/list').then((data) => {
       this.props.docsActionList(data.data.message);
@@ -15,11 +23,42 @@ class Docs extends Component {
       console.log(err);
     })
   }
+  onChangeSearchOption(value) {
+    this.setState({
+      searchOption: value,
+    });
+  }
+  handleOnSearch(e) {
+    axios.get(`/docs/list?${this.state.searchOption}=${e.target.value}`).then((data) => {
+      this.props.docsActionList(data.data.message);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
   render() {
     const listData = this.props.docsReducer.get('docsList').toJS();
+    const selectBefore = (
+      <Select
+        defaultValue="title"
+        style={{ width: 90 }}
+        onChange={this.onChangeSearchOption.bind(this)}
+      >
+        <Option value="title">标题</Option>
+        <Option value="description">描述</Option>
+        <Option value="user">作者</Option>
+      </Select>
+    );
     return (
       <div className="docsContainer">
         <div className="writeDocs">
+          <Input
+            addonBefore={selectBefore}
+            addonAfter={<Icon type="search" />}
+            style={{
+              width: 500,
+            }}
+            onPressEnter={this.handleOnSearch.bind(this)}
+          />
           <Button
             type="primary"
             onClick={() => {
@@ -40,10 +79,14 @@ class Docs extends Component {
             >
               <List.Item.Meta
                 // avatar={<Avatar src={item.avatar} />}
-                title={<a href="#">{item.title}</a>}
+                title={<a href="#">{item.title}-{item.user}</a>}
                 description={item.description}
               />
-              {item.content}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: item.content,
+                }}
+              />
             </List.Item>
           )}
         />

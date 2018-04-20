@@ -44,7 +44,7 @@ class SideMenu extends Component {
         }}
       >
         <Menu
-          style={{ height: '100%' }} mode="inline" theme="dark"
+          style={{ height: '100%' }} mode="inline" theme="light"
           onClick={this.handleClick.bind(this)}
           defaultSelectedKeys={['/home']}
         >
